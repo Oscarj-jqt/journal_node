@@ -1,0 +1,31 @@
+<!-- Page d'accueil  -->
+<div class="author">
+    <h1 class="author_heading">Salut, je suis Oscar.</h1>
+    <p class="author_body">Développeur web</p>
+</div>
+<!-- Dans la route static de l'app, public est déjà précisé donc pas ici  -->
+<img src="/img/hero-image.jpg" alt="" class="hero-image" width="981" height="528" />
+
+<section class="articles">
+    <h2 class="articles_heading">Dernier posts</h2>
+
+    <ul class="articles-ul">
+
+        <!-- On utilise une boucle qui va parcourir notre tableau d'objet des données  -->
+        <% data.forEach(post => { %>
+        <li>
+            <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="articles-list_date"><%= post.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+
+    <% if (nextPage !== null) { %>
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; Voir les anciens posts</a>
+
+    <% } %>
+
+
+</section>

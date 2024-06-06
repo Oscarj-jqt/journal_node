@@ -1,0 +1,8 @@
+Créer un blog robuste et rapide avec node Express et Mongo
+Il y aura plusieurs pages, routes
+On utilise le package ejs pour des pages mieux concues
+
+
+
+Accueil, à propos, contact
+Header, Fonction de recherche avec barre de recherche et footer
