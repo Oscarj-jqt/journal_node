@@ -1,0 +1,19 @@
+<div class="author">
+    <h1 class="author_heading">Résultats de recherche</h1>
+</div>
+
+<section class="articles">
+
+    <ul class="articles-ul">
+
+        <!-- On utilise une boucle qui va parcourir notre tableau d'objet des données  -->
+        <% data.forEach(post => { %>
+        <li>
+            <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="articles-list_date"><%= post.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</section>

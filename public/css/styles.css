@@ -43,6 +43,7 @@ textarea {
 }
 
 .btn {
+    /* padding: 2px; */
     background-color: var(--black);
     border: none;
     color: white;
@@ -273,8 +274,8 @@ img {
 
 /* SearchBar  */
 .searchBar {
-    /* visibility: hidden;
-    transform: translateY(-100px); */
+    visibility: hidden;
+    transform: translateY(-100px);
     background-color: var(--black);
     padding: 4px 0;
     position: absolute;
@@ -284,7 +285,7 @@ img {
 
 .searchBar.open {
     transform: translateY(0);
-    transition: transform 0.1s ;
+    transition: transform 0.1s;
 }
 
 .searchBar input {
@@ -315,6 +316,7 @@ img {
 
 .admin-posts-controls form {
     display: inline-block;
+    /* flex-direction: column; */
 }
 
 .admin-posts-controls .btn {

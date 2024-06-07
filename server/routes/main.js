@@ -24,18 +24,17 @@ router.get("/", async (req, res) => {
         .limit(perPage)
         .exec();
 
-
         const count = await Post.countDocuments();
         // Conversion en nombre 
         const nextPage = parseInt(page) + 1
         const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
-        
         res.render("index", { 
             locals,
             data,
             current: page,
-            nextPage: hasNextPage ? nextPage: null
+            nextPage: hasNextPage ? nextPage: null,
+            currentRoute: "/"
             });
 
 
@@ -50,7 +49,7 @@ router.get("/", async (req, res) => {
 // insertPostData();
 
 
-router.post("/search", async(req, res) => {
+router.post("/search", async (req, res) => {
     try {
         const locals = {
             title: "Search",
@@ -59,14 +58,26 @@ router.post("/search", async(req, res) => {
 
         let searchTerm = req.body.searchTerm;
 
-        console.log(search)
+        console.log(searchTerm);
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
 
 
+        // Utilisez searchTerm pour rechercher des posts correspondant.
+        const data = await Post.find({
+            $or: [
+                { title: { $regex: new RegExp(searchNoSpecialChar, "i")}},
+                { body: { $regex: new RegExp(searchNoSpecialChar, "i")}}
+            ]
+        });
 
-        const data = await Post.find();
-        res.render("search", { locals, data });
+        res.render("search", {
+            data,
+            locals
+        });
+
     } catch (error) {
         console.log(error);
+        res.status(500).send('Internal Server Error');
     }
 
 });
@@ -82,8 +93,10 @@ router.get("/post/:id", async (req, res) => {
 
         const locals = {
             title: data.title,
-            description: "Simple Blog created with NodeJS, Express & MongoDb"
+            description: "Simple Blog created with NodeJS, Express & MongoDb",
+            currentRoute: `/post/${id}`
         }
+
         if (!data) {
             return res.status(404).send('Post not found');
         }
@@ -97,7 +110,9 @@ router.get("/post/:id", async (req, res) => {
 
 router.get("/about", (req, res) => {
     //render pour toute une page au lieu de mots
-    res.render("about");
+    res.render("about", {
+        currentRoute: "/about"
+    });
 });
 
 // function insertPostData () {
