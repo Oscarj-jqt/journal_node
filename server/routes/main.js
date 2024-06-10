@@ -1,12 +1,9 @@
-// Ce fichier gère les routes principales
-
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
 
-// Cette route affiche la page d'accueil listant les acticles avec pagination
-
-router.get("/accueil", async (req, res) => {
+// On crée nos routes
+router.get("/", async (req, res) => {
     //render pour toute une page au lieu de mots
     //Renvoyer des données EJS
     // On crée l'objet ici
@@ -21,27 +18,16 @@ router.get("/accueil", async (req, res) => {
         // Le nombre de page que l'on veut afficher 
         let perPage = 2; 
         let page = req.query.page || 1;
-        // Définit le nombre de posts à afficher par page (`perPage`)
-        // et récupère le numéro de la page actuelle à partir de la requête (`req.query.page`).
-        // Si aucune page n'est spécifiée, la page par défaut est la première (`1`).
-
 
         const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
         .skip(perPage * page - perPage)
         .limit(perPage)
         .exec();
-        // Utilise l'agrégation MongoDB pour récupérer les posts de la base de données, 
-        //triés par date de création décroissante (`$sort`).
-        // Les résultats sont paginés en sautant (`skip`) les posts des pages précédentes
-        // et en limitant (`limit`) le nombre de posts retournés à `perPage`.
 
-        // Compte le nombre total de documents (posts) dans la collection.
         const count = await Post.countDocuments();
-
+        // Conversion en nombre 
         const nextPage = parseInt(page) + 1
         const hasNextPage = nextPage <= Math.ceil(count / perPage);
-        // Calcule le numéro de la prochaine page (`nextPage`) et détermine s'il y a une page suivante (`hasNextPage`).
-        // `Math.ceil(count / perPage)` calcule le nombre total de pages nécessaires pour afficher tous les posts.
 
         res.render("index", { 
             locals,
@@ -142,3 +128,8 @@ router.get("/about", (req, res) => {
 
 //L'exportation pour que l'app fonctionne
 module.exports = router;
+
+
+
+
+

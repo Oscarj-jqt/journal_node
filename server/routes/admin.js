@@ -1,21 +1,16 @@
-//Ce fichier sert aux routes du serveur pour les fonctionnalités de l'administrateur
-//importation du framework
 const express = require("express");
-// utilisation pour définir des routes modulaires et gérables
 const router = express.Router();
-// importation des collections MongoDB
 const Post = require("../models/Post");
 const User = require("../models/User");
-// utilisé pour le hashage des mots de passe
 const bcrypt = require("bcrypt");
-//
 const jwt = require("jsonwebtoken");
 
-// Les vues d'administration
+
 const adminLayout = "../views/layouts/admin";
 const jwtSecret = process.env.JWT_SECRET;
 
 /**Check Login */
+
 
 const authMiddleware = (req, res, next ) => {
     const token = req.cookies.token;
@@ -34,7 +29,7 @@ const authMiddleware = (req, res, next ) => {
 }
 
 /**GET
- * Page de connexion de l'administrateur
+ * Admin - Login Page
  */
 
 
@@ -51,9 +46,6 @@ router.get("/admin", async (req, res) => {
     }
 });
 
-
-
-//Traitement du formulaire de connexion
 
 router.post("/admin", async (req, res) => {
     try {
@@ -83,7 +75,7 @@ router.post("/admin", async (req, res) => {
 });
 
 /**GET
- * Tableau de bord de l'administrateur
+ * Dashboard -Admin
  */
 
 router.get("/dashboard", authMiddleware, async (req, res) => {
@@ -112,14 +104,14 @@ router.get("/dashboard", authMiddleware, async (req, res) => {
 
 
 /**GET
- * Ajouter un nouvel article
+ * Admin Créer un nouveau post
  */
 
 router.get("/add-post", authMiddleware, async (req, res) => {
 
     try {
         const locals = {
-            title: "Ajouter un article",
+            title: "Ajouter un Pos",
             description: "Simple Blog ..."
         }
     
@@ -140,7 +132,7 @@ router.get("/add-post", authMiddleware, async (req, res) => {
 
 /**
  * POST
- * Ajouter un nouvel article
+ * Admin Créer un nouveau poste
  */
 
 
@@ -169,7 +161,7 @@ router.post("/add-post", authMiddleware, async (req, res) => {
 
 
 /**GET
- * Modifier un article
+ * Admin - créer un nouveau poste
  */
 
 router.get("/edit-post/:id", authMiddleware, async (req, res) => {
@@ -204,7 +196,7 @@ router.get("/edit-post/:id", authMiddleware, async (req, res) => {
 
 
 /**PUT
- * Modifier un article
+ * Admin - créer un nouveau poste
  */
 
 router.put("/edit-post/:id", authMiddleware, async (req, res) => {
@@ -296,8 +288,10 @@ router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
 
 /**
  * DELETE
- * Déconnexion
+ * Admin - Logout
  */
+
+
 
 
 

@@ -1,4 +1,4 @@
-// Ce fichier sert à à la la mise en place de la connexion à la base de donnée 
+// On fait les connexion MongoDB 
 
 const mongoose = require("mongoose");
 const connectDB = async () => {

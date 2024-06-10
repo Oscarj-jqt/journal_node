@@ -1,8 +1,6 @@
-// Ce fichier sert à la création du modèle pour les utilisateurs de la bdd
-
 const mongoose = require("mongoose");
 
-// On crée la seconde table pour les utilisateurs
+// On crée notre première table dans la bdd 
 
 const Schema = mongoose.Schema;
 const UserSchema = new mongoose.Schema({

@@ -1,5 +1,3 @@
-// Ce fichier sert à la création du modèle pour les articles de la bdd
-
 const mongoose = require("mongoose");
 
 // On crée notre première table dans la bdd 
