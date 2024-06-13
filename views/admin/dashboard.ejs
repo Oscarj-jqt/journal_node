@@ -1,6 +1,6 @@
 <div class="admin-title">
-    <h2>Posts</h2>
-    <a href="/add-post" class="button">+ Ajouter des posts</a>
+    <h2>Les articles</h2>
+    <a href="/add-post" class="button">+ Ajouter des articles</a>
 </div>
 
 <ul class="admin-posts">
@@ -10,9 +10,12 @@
         <li>
 
             <a href="/post/<%= post._id %>">
+            <!-- Lien vers le post : Le titre du post est affiché comme un lien. Lorsque l'utilisateur clique dessus,   -->
+            <!-- il est redirigé vers la page du post spécifique avec l'ID du post dans l'URL.  -->
 
                 <%= post.title %> &nearr;
             </a>
+            <p><strong>Section:</strong> <%= post.section %></p>
             <div class="admin-post-controls">
                 <a href="/edit-post/<%= post._id %>" class="btn">Modifier</a>
 

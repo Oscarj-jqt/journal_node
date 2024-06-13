@@ -10,10 +10,13 @@
 
 <form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
 
-    <label for="title"><b>Title</b></label>
-    <input type="text" placeholder="Titre du poste" name="title" value="<%= data.title %>">
+    <label for="title"><b>Titre</b></label>
+    <input type="text" placeholder="Titre du poste" name="title" value="<%= data.title %>" required>
 
-    <label for="body"><b>Content</b></label>
+    <label for="section"><b>Section</b></label>
+    <input type="text" placeholder="Section du poste" name="section" value="<%= data.section %>" required>
+
+    <label for="body"><b>Contenu</b></label>
     <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
 
     <input type="submit" value="Modifier" class="btn">

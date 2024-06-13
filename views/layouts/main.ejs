@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= locals.title  %></title>
+    <meta name="section" content="<%= locals.section %>">
     <meta name="description" content="<%= locals.description %>">
     <link rel="stylesheet" href="/css/styles.css">
     <script type="text/javascript" defer src="/js/script.js"></script>
@@ -14,7 +15,7 @@
     <!-- Ecrire ejsout pour le ejs  -->
     <!-- Mettre un tiret au lieu du premier égal pour enlever les balises -->
     <div class="container">
-        <%- include("../partials/header.ejs")  %>
+        <%- include("../partials/header.ejs", { currentRoute: currentRoute }) %>
         <main class="main">
             <%- body %>
         </main>

@@ -8,11 +8,10 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 const connectDB = require("./server/config/db");
-const { isActiveRoute } = require("./server/helpers/routeHelpers")
+const { isActiveRoute } = require("./server/helpers/routeHelpers");
 const path = require('path');
 const app = express();
 const PORT = 5000 || process.env.PORT;
-
 
 // Connexion à la bdd 
 connectDB();
@@ -43,18 +42,21 @@ app.set("layout", "./layouts/main");
 //Noter rendu/pages sous format ejs
 app.set("view engine",  "ejs");
 
+// locals utilise la fonction isActiveRoute
 app.locals.isActiveRoute = isActiveRoute;
-
-
 
 app.set('views', path.join(__dirname, 'views'));
 
-
+app.use("/", (req, res, next) => {
+    // Passez la variable currentRoute aux fichiers EJS
+    res.locals.currentRoute = req.path;
+    next();
+});
 
 app.use("/", require("./server/routes/main"));
 app.use("/", require("./server/routes/admin"));
 
 
 app.listen(PORT, () => {
-    console.log(`L'app s'execute sur le port ${PORT}`);
+    console.log(`L'app s'execute sur le port ${PORT}, accèder au site : http://localhost:5000/accueil`);
 })

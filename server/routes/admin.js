@@ -4,8 +4,7 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-
+const { isActiveRoute } = require("../helpers/routeHelpers");
 const adminLayout = "../views/layouts/admin";
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -111,7 +110,7 @@ router.get("/add-post", authMiddleware, async (req, res) => {
 
     try {
         const locals = {
-            title: "Ajouter un Pos",
+            title: "Ajouter un article",
             description: "Simple Blog ..."
         }
     
@@ -142,7 +141,8 @@ router.post("/add-post", authMiddleware, async (req, res) => {
         try {
             const newPost = new Post({
                 title: req.body.title,
-                body: req.body.body
+                body: req.body.body,
+                section: req.body.section
             });
 
             await Post.create(newPost);
@@ -193,10 +193,8 @@ router.get("/edit-post/:id", authMiddleware, async (req, res) => {
 
 
 
-
-
 /**PUT
- * Admin - créer un nouveau poste
+ * Admin - modifier un poste
  */
 
 router.put("/edit-post/:id", authMiddleware, async (req, res) => {
@@ -205,6 +203,7 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
         await Post.findByIdAndUpdate(req.params.id, {
             title: req.body.title,
             body: req.body.body,
+            section: req.body.section,
             updatedAt: Date.now()
         });
 

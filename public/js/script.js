@@ -21,7 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
             this.setAttribute("aria-expanded", "false");
         });
 
-
-
-
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const currentLocation = location.pathname;
+//     const menuItem = document.querySelectorAll('.sub-nav ul li a');
+//     const menuLength = menuItem.length;
+//     for (let i = 0; i < menuLength; i++) {
+//         if (menuItem[i].pathname === currentLocation) {
+//             menuItem[i].className = "active";
+//         }
+//     }
+// });

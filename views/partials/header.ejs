@@ -1,13 +1,13 @@
 <header class="header">
-    <a href="/" class="header_logo">NodeJS</a>
+    <a href="/accueil" class="header_logo">Journal</a>
 
     <nav class="header_nav">
         <ul>
             <li>
-                <a href="/" class="<%= isActiveRoute("/", currentRoute) %>">Accueil</a>
+                <a href="/accueil" class="<%= isActiveRoute("/accueil", currentRoute) %>">Accueil</a>
             </li>
             <li>
-                <a href="/about" class="<%= isActiveRoute("/about", currentRoute) %>">A propos</a>
+                <a href="/about" class="<%= isActiveRoute("/about", currentRoute) %>">À propos</a>
             </li>
             <li>
                 <a href="/contact" class="<%= isActiveRoute("/contact", currentRoute) %>">Contact</a>
@@ -18,8 +18,17 @@
 
     <div class="header_button">
         <button class="searchBtn" aria-expanded="false">
-            Search
-            
+            Rechercher
         </button>
     </div>
 </header>
+
+<nav class="sub-nav">
+    <ul>
+        <li><a href="/developpement" class="<%= isActiveRoute("/developpement", currentRoute) %>">Développement</a></li>
+        <li><a href="/musculation" class="<%= isActiveRoute("/musculation", currentRoute) %>">Musculation</a></li>
+        <li><a href="/nutrition" class="<%= isActiveRoute("/nutrition", currentRoute) %>">Nutrition</a></li>
+        <li><a href="/philosophie" class="<%= isActiveRoute("/philosophie", currentRoute) %>">Philosophie</a></li>
+        <li><a href="/litterature" class="<%= isActiveRoute("/litterature", currentRoute) %>">Littérature</a></li>
+    </ul>
+</nav>

@@ -1,8 +1,6 @@
-Créer un blog robuste et rapide avec node Express et Mongo
-Il y aura plusieurs pages, routes
-On utilise le package ejs pour des pages mieux concues
+ajouter le texte et la date sur l'image d'Accueil
 
+lier les section de la nav à des pages où il y a les articles triés
+en fonction du thème sélectionné
 
-
-Accueil, à propos, contact
-Header, Fonction de recherche avec barre de recherche et footer
+styliser la manière dont l'article(le texte) a été ajouté lors de la création d'un poste

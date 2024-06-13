@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
+const { isActiveRoute } = require("../helpers/routeHelpers");
 
 // On crée nos routes
-router.get("/", async (req, res) => {
+router.get("/accueil", async (req, res) => {
     //render pour toute une page au lieu de mots
     //Renvoyer des données EJS
     // On crée l'objet ici
@@ -34,7 +35,7 @@ router.get("/", async (req, res) => {
             data,
             current: page,
             nextPage: hasNextPage ? nextPage: null,
-            currentRoute: "/"
+            currentRoute: "/accueil"
             });
 
 
@@ -93,6 +94,7 @@ router.get("/post/:id", async (req, res) => {
 
         const locals = {
             title: data.title,
+            section: data.section,
             description: "Simple Blog created with NodeJS, Express & MongoDb",
             currentRoute: `/post/${id}`
         }
@@ -127,6 +129,8 @@ router.get("/about", (req, res) => {
 // insertPostData();
 
 //L'exportation pour que l'app fonctionne
+
+
 module.exports = router;
 
 

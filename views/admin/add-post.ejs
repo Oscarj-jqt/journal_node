@@ -5,11 +5,14 @@
 
 <form action="/add-post" method="POST">
 
-    <label for="title"><b>Title</b></label>
-    <input type="text" placeholder="Titre du poste" name="title">
+    <label for="title"><b>Titre</b></label>
+    <input type="text" placeholder="Titre du poste" name="title" required>
 
-    <label for="body"><b>Content</b></label>
-    <textarea name="body" cols="50" rows="10"></textarea>
+    <label for="section"><b>Section</b></label>
+    <input type="text" placeholder="Section du poste" name="section" required>
+
+    <label for="body"><b>Contenu</b></label>
+    <textarea name="body" cols="50" rows="10" required></textarea>
 
     <input type="submit" value="Ajouter" class="btn">
 
