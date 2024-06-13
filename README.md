@@ -19,5 +19,3 @@ NodeJS Blog est une application web de gestion de blog, construite avec Node.js,
 Le but de ce projet est de fournir une plateforme simple mais complète pour la gestion de contenu de blog. Il s'adresse aux développeurs souhaitant apprendre et pratiquer les bases du développement web full-stack avec des technologies modernes telles que Node.js, Express, MongoDB et EJS. Le projet couvre plusieurs aspects essentiels, tels que l'authentification, la gestion des utilisateurs, la création et l'édition de contenu, ainsi que la gestion des routes et des vues.
 
 ---
-
-Merci d'utiliser NodeJS Blog ! Si vous avez des questions ou des suggestions, n'hésitez pas à ouvrir une issue sur le dépôt.
