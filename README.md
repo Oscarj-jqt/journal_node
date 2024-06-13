@@ -20,4 +20,6 @@ Le but de ce projet est de fournir une plateforme simple mais complète pour la 
 
 Les utilisateurs de ce journal peuvent le consulter pour s'informer d'actualités sur le développement web et autres.
 
+Il sera bentôt mis en ligne ...
+
 ---
