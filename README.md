@@ -1,4 +1,4 @@
-# NodeJS Blog (en cours...)
+# NodeJS Blog
 
 ## Description
 
